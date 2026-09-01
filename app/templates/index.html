@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexScout Hockey Enterprise - NHL & NCAA Recruiting Command Center</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Open Graph / Social Sharing Meta Tags for Trust & High-Appeal Previews -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ApexScout Enterprise">
+    <meta property="og:title" content="ApexScout Enterprise - Next-Gen NHL Ops & NCAA D1 Recruiting OS">
+    <meta property="og:description" content="The unfair advantage in modern hockey operations. Hands-free voice AI, empirical draft pick trade curves, 2026 House settlement revenue-share optimizer, and VisionLab stride biomechanics.">
+    <meta property="og:image" content="/static/img/og-preview.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter / X Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ApexScout Enterprise - Next-Gen NHL Ops & NCAA D1 Recruiting OS">
+    <meta name="twitter:description" content="The unfair advantage in modern hockey operations. Hands-free voice AI, empirical draft trade curves, 2026 NIL caps, and VisionLab biomechanics.">
+    <meta name="twitter:image" content="/static/img/og-preview.svg">
+
+    <!-- Theme & Icons -->
+    <meta name="theme-color" content="#070b14">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js for Spider Radars -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/css/custom.css">
+</head>
+<body class="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-6 py-3.5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <!-- Brand & Org Switcher -->
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-emerald-400 flex items-center justify-center shadow-lg shadow-sky-500/20">
+                        <i data-lucide="crosshair" class="w-5 h-5 text-slate-950 font-bold"></i>
+                    </div>
+                    <div>
+                        <div class="font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
+                            ApexScout <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-400 font-mono font-bold">PRO</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400">Hockey Intelligence & Recruiting</div>
+                    </div>
+                </div>
+
+                <div class="hidden md:block h-6 w-px bg-slate-800"></div>
+
+                <!-- Organization Mode Badge -->
+                <div class="hidden md:flex items-center gap-2 bg-slate-900/80 border border-slate-800 rounded-lg px-2.5 py-1">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span class="text-xs text-slate-300 font-medium">NHL Hockey Operations & NCAA D1 Hub</span>
+                </div>
+            </div>
+
+            <!-- Global Search & Stats Header -->
+            <div class="flex items-center gap-4">
+                <!-- Search Input -->
+                <div class="relative flex-1 md:w-72">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2.5"></i>
+                    <input type="text" id="global-search-input" placeholder="Search player, team, league..." 
+                           class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-9 pr-3.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-all">
+                </div>
+
+            <!-- Quick Stats Pill & War Room Launch -->
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-3 bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-1.5 text-xs font-mono">
+                    <span class="text-slate-400">Prospects: <strong id="stat-total-prospects" class="text-sky-400">12</strong></span>
+                    <span class="text-slate-600">|</span>
+                    <span class="text-slate-400">Rev-Share: <strong class="text-emerald-400">$3.2M Pool</strong></span>
+                    <span class="text-slate-600">|</span>
+                    <span class="text-slate-400">Cap: <strong class="text-sky-400">24/26 Active</strong></span>
+                </div>
+                <button onclick="window.App.switchTab('draftfloor')" class="px-3 py-1.5 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-slate-950 font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-lg shadow-cyan-500/20 transition-all">
+                    <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                    Live War Room
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs Bar -->
+        <div class="max-w-7xl mx-auto mt-3 pt-2 border-t border-slate-800/60 flex items-center gap-1 overflow-x-auto text-xs font-bold">
+            <button onclick="window.App.switchTab('overview')" id="tab-btn-overview" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all nav-tab-active text-cyan-400">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-400"></i>
+                Overview & Advantage
+            </button>
+            <button onclick="window.App.switchTab('prospects')" id="tab-btn-prospects" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                Prospect Intelligence
+            </button>
+            <button onclick="window.App.switchTab('rink')" id="tab-btn-rink" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                Interactive Ice Rink
+            </button>
+            <button onclick="window.App.switchTab('draft')" id="tab-btn-draft" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                War Room Big Board
+            </button>
+            <button onclick="window.App.switchTab('draftfloor')" id="tab-btn-draftfloor" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+                Draft Floor & Trade Machine
+            </button>
+            <button onclick="window.App.switchTab('timemachine')" id="tab-btn-timemachine" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="history" class="w-3.5 h-3.5 text-purple-400"></i>
+                Time-Machine & Comparator
+            </button>
+            <button onclick="window.App.switchTab('nilhub')" id="tab-btn-nilhub" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="dollar-sign" class="w-3.5 h-3.5 text-emerald-400"></i>
+                NIL & 2026 Rev-Share
+            </button>
+            <button onclick="window.App.switchTab('visionlab')" id="tab-btn-visionlab" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="activity" class="w-3.5 h-3.5 text-cyan-400"></i>
+                VisionLab™ Biomechanics
+            </button>
+            <button onclick="window.App.switchTab('portal')" id="tab-btn-portal" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="arrow-right-left" class="w-3.5 h-3.5"></i>
+                NCAA Transfer Portal
+            </button>
+            <button onclick="window.App.switchTab('depth')" id="tab-btn-depth" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>
+                3-Year Depth Chart
+            </button>
+            <button onclick="window.App.switchTab('chemistry')" id="tab-btn-chemistry" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="workflow" class="w-3.5 h-3.5 text-cyan-400"></i>
+                LineChemistry™
+            </button>
+            <button onclick="window.App.switchTab('livescout')" id="tab-btn-livescout" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
+                <i data-lucide="radio" class="w-3.5 h-3.5 text-rose-500"></i>
+                In-Rink Live Scout & RinkMic™
+            </button>
+            <button onclick="window.App.switchTab('scoutwire')" id="tab-btn-scoutwire" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all bg-sky-500/10 border border-cyan-400/40 text-cyan-300 font-bold hover:bg-sky-500/20 shadow">
+                <i data-lucide="message-square" class="w-3.5 h-3.5 text-cyan-400"></i>
+                ScoutWire™ Voice & Team Hub
+                <span class="px-1.5 py-0.2 rounded-full bg-rose-500 text-white font-mono text-[9px] font-bold">UNLIMITED VOICE</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6">
+
+        <!-- 0. HERO / LANDING / ADVANTAGE OVERVIEW -->
+        <section id="tab-view-overview" class="space-y-12">
+            
+            <!-- HERO HEADER BANNER -->
+            <div class="relative rounded-3xl p-8 md:p-12 overflow-hidden border border-cyan-500/40 bg-gradient-to-b from-[#0c182b] via-[#091120] to-[#060a14] shadow-2xl">
+                <!-- Background Glowing Orbs -->
+                <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10 max-w-4xl space-y-6">
+                    <!-- Pill Tag -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono font-bold tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                        NEXT-GENERATION HOCKEY INTELLIGENCE OPERATING SYSTEM
+                    </div>
+
+                    <!-- Main Hero Headline -->
+                    <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-[1.1]">
+                        The Unfair Advantage in Modern <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-400">Hockey Operations.</span>
+                    </h1>
+
+                    <!-- Subhead -->
+                    <p class="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
+                        Engineered for NHL General Managers, NCAA D1 Head Coaches, and Chief Amateur Scouts who refuse to draft on gut feel or type notes on 1990s legacy software. Built with hands-free voice AI, live draft trade curves, historical cohort vectors, 2026 revenue-share caps, and computer vision stride biomechanics.
+                    </p>
+
+                    <!-- CTA Buttons & Live Metrics -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="window.App.switchTab('draftfloor')" class="px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-slate-950 font-black text-sm rounded-xl flex items-center gap-2.5 shadow-xl shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
+                            <i data-lucide="zap" class="w-4 h-4"></i>
+                            Launch Live Draft Floor Simulator
+                        </button>
+                        <button onclick="window.App.switchTab('visionlab')" class="px-6 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm rounded-xl flex items-center gap-2 transition-all">
+                            <i data-lucide="activity" class="w-4 h-4 text-cyan-400"></i>
+                            Explore VisionLab™ Biomechanics
+                        </button>
+                        <button onclick="window.App.switchTab('nilhub')" class="px-6 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-emerald-300 border border-emerald-500/30 font-bold text-sm rounded-xl flex items-center gap-2 transition-all">
+                            <i data-lucide="dollar-sign" class="w-4 h-4 text-emerald-400"></i>
+                            NCAA 2026 Rev-Share Hub
+                        </button>
+                    </div>
+
+                    <!-- Live Hardware / Platform Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-slate-800/80 text-xs font-mono">
+                        <div><strong class="text-white text-sm">32 NHL Teams</strong><div class="text-slate-500">Value Curve Engine</div></div>
+                        <div><strong class="text-cyan-400 text-sm">AirPods / WebSpeech</strong><div class="text-slate-500">RinkMic™ Hands-Free</div></div>
+                        <div><strong class="text-emerald-400 text-sm">26-Man Cap Guard</strong><div class="text-slate-500">House Settlement Engine</div></div>
+                        <div><strong class="text-purple-400 text-sm">60 FPS Optical</strong><div class="text-slate-500">Stride Kinematics Mesh</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THE UNMATCHED ADVANTAGE: WHY APEXSCOUT DESTROYS THE LEGACY STANDARD -->
+            <div class="space-y-6">
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                        What the Legacy Standard <span class="text-rose-400 line-through">Does Not Have</span>
+                    </h2>
+                    <p class="text-xs md:text-sm text-slate-400">
+                        Legacy scouting tools like RinkNet, FastModel, and Elite Prospects were built decades ago. Here is how ApexScout transforms hockey operations from static tables into high-velocity predictive intelligence.
+                    </p>
+                </div>
+
+                <!-- 6 Pillar Comparison Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    
+                    <!-- 1. RinkMic -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 space-y-3 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+                            <i data-lucide="mic" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">1. RinkMic™ Voice-to-Dossier AI</h3>
+                        <div class="text-xs text-rose-400/90 font-medium">❌ Standard: Typing on freezing tablets or transcribing paper at night.</div>
+                        <div class="text-xs text-slate-300 leading-relaxed">
+                            ✅ <strong>ApexScout:</strong> Hands-free AirPods voice recognition in 30°F rinks. Real-time hockey NLP extracts player, clock, micro-events, and auto-compiles multi-paragraph scout reports.
+                        </div>
+                    </div>
+
+                    <!-- 2. PuckMatrix Trade Machine -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 space-y-3 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                            <i data-lucide="scale" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">2. PuckMatrix™ Pick Value Trade Machine</h3>
+                        <div class="text-xs text-rose-400/90 font-medium">❌ Standard: Static Excel sheets or whiteboard photos under a 3-min timer.</div>
+                        <div class="text-xs text-slate-300 leading-relaxed">
+                            ✅ <strong>ApexScout:</strong> Empirical NHL exponential pick value curve calculating multi-pick surplus point differentials and live trade fairness grades (Steal vs Overpay).
+                        </div>
+                    </div>
+
+                    <!-- 3. Time-Machine Benchmarks -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-purple-500/40 space-y-3 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">
+                            <i data-lucide="history" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">3. "Time-Machine" Draft-Year Forecaster</h3>
+                        <div class="text-xs text-rose-400/90 font-medium">❌ Standard: Raw box scores with zero age-normalization.</div>
+                        <div class="text-xs text-slate-300 leading-relaxed">
+                            ✅ <strong>ApexScout:</strong> Vector similarity comparing current 17yo prospects directly against 17yo Bedard, Celebrini, McDavid, and Makar on dual spider radars, predicting 90th percentile ceiling/floor.
+                        </div>
+                    </div>
+
+                    <!-- 4. 2026 Rev-Share & NIL -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/40 space-y-3 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                            <i data-lucide="dollar-sign" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">4. 2026/27 House Settlement NIL Hub</h3>
+                        <div class="text-xs text-rose-400/90 font-medium">❌ Standard: Generic CRM contact lists with zero revenue-share modeling.</div>
+                        <div class="text-xs text-slate-300 leading-relaxed">
+                            ✅ <strong>ApexScout:</strong> 26-man hard roster cap guard, $3.2M department revenue-sharing + NIL collective allocator, and Transfer Portal "Points-Per-Dollar" ROI simulator.
+                        </div>
+                    </div>
+
+                    <!-- 5. VisionLab Biomechanics -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 space-y-3 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+                            <i data-lucide="activity" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">5. VisionLab™ Stride Biomechanics</h3>
+                        <div class="text-xs text-rose-400/90 font-medium">❌ Standard: Subjective eye-test only ("looks like a good skater").</div>
+                        <div class="text-xs text-slate-300 leading-relaxed">
+                            ✅ <strong>ApexScout:</strong> 2D animated skeletal pose tracking, 0-15 MPH burst acceleration clock, knee extension arc analysis, and AI biomechanical coach corrective drills.
+                        </div>
+                    </div>
+
+                    <!-- 6. Consensus Outlier Engine -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-sky-500/40 space-y-3 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">6. Outlier & Variance Detection</h3>
+                        <div class="text-xs text-rose-400/90 font-medium">❌ Standard: Averages disguise major regional scout disagreement.</div>
+                        <div class="text-xs text-slate-300 leading-relaxed">
+                            ✅ <strong>ApexScout:</strong> Statistical variance engine automatically flagging [Scout Bull], [Analytics Bull], and [High Variance Caution] to eliminate draft-day groupthink.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- EXECUTIVE FEATURE MATRIX TABLE -->
+            <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                    <div>
+                        <h3 class="text-base font-bold text-white">Executive Feature Comparison Matrix</h3>
+                        <p class="text-xs text-slate-400">Head-to-head architectural audit vs current market leaders.</p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs font-medium">
+                        <thead class="bg-slate-900/80 text-slate-300 font-mono uppercase text-[10px] border-b border-slate-800">
+                            <tr>
+                                <th class="p-3">Platform Capability</th>
+                                <th class="p-3 text-slate-400">Legacy Standard (RinkNet)</th>
+                                <th class="p-3 text-slate-400">College CRMs (FastModel)</th>
+                                <th class="p-3 text-cyan-400 font-extrabold bg-cyan-950/30">ApexScout Enterprise</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/80 text-slate-300">
+                            <tr>
+                                <td class="p-3 font-bold text-white">In-Rink Voice AI Dictation</td>
+                                <td class="p-3 text-rose-400">None (Manual Typing)</td>
+                                <td class="p-3 text-rose-400">None</td>
+                                <td class="p-3 font-bold text-emerald-400 bg-cyan-950/20">✅ RinkMic™ NLP Auto-Tagging</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-white">Draft Pick Surplus Trade Evaluator</td>
+                                <td class="p-3 text-rose-400">None (Static Sheets)</td>
+                                <td class="p-3 text-rose-400">None</td>
+                                <td class="p-3 font-bold text-emerald-400 bg-cyan-950/20">✅ Empirical NHL Surplus Curve</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-white">Age-Normalized Superstar Benchmarks</td>
+                                <td class="p-3 text-rose-400">Raw Stats Only</td>
+                                <td class="p-3 text-rose-400">None</td>
+                                <td class="p-3 font-bold text-emerald-400 bg-cyan-950/20">✅ 17yo Bedard/McDavid Vectors</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-white">2026/27 NCAA Revenue-Sharing Hub</td>
+                                <td class="p-3 text-rose-400">None</td>
+                                <td class="p-3 text-rose-400">Basic Contacts Only</td>
+                                <td class="p-3 font-bold text-emerald-400 bg-cyan-950/20">✅ 26-Man Cap + $3.2M Optimizer</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-white">Computer Vision Stride Biomechanics</td>
+                                <td class="p-3 text-rose-400">None</td>
+                                <td class="p-3 text-rose-400">None</td>
+                                <td class="p-3 font-bold text-emerald-400 bg-cyan-950/20">✅ 2D Pose & Stride Simulator</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-white">Interactive 2D Vector Ice Rink (xG)</td>
+                                <td class="p-3 text-rose-400">Static Text / PDF</td>
+                                <td class="p-3 text-rose-400">Basic Shot List</td>
+                                <td class="p-3 font-bold text-emerald-400 bg-cyan-950/20">✅ 200x85ft Vector Canvas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- BOTTOM CTA WAR ROOM LAUNCHER -->
+            <div class="glass-panel p-8 rounded-3xl border border-cyan-500/40 bg-gradient-to-r from-cyan-950/30 via-slate-900 to-cyan-950/30 text-center space-y-4">
+                <h3 class="text-2xl font-extrabold text-white">Ready to elevate your hockey operations?</h3>
+                <p class="text-xs text-slate-400 max-w-xl mx-auto">
+                    Access all live intelligence modules right now. Evaluate 2026 draft prospects, test NHL pick trade combinations, or optimize your NCAA revenue-sharing roster.
+                </p>
+                <div class="flex items-center justify-center gap-3 pt-2">
+                    <button onclick="window.App.switchTab('prospects')" class="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold text-xs rounded-xl shadow-lg shadow-cyan-500/20">
+                        View Prospect 360° Dossiers
+                    </button>
+                    <button onclick="window.App.switchTab('timemachine')" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl border border-slate-700">
+                        Test Time-Machine Comparator
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 1. TAB: PROSPECT & PLAYER INTELLIGENCE -->
+        <section id="tab-view-prospects" class="hidden space-y-6">
+            <!-- Filter Ribbon -->
+            <div class="glass-panel p-5 rounded-2xl space-y-3.5">
+                <!-- Tier / League Level Filter -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mr-1">League / Level:</span>
+                    <button onclick="window.App.setFilter('league', 'ALL')" id="flt-lg-ALL" class="px-3 py-1 text-xs font-bold rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">All Leagues (58)</button>
+                    <button onclick="window.App.setFilter('league', 'NHL')" id="flt-lg-NHL" class="px-3 py-1 text-xs font-bold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">🏒 NHL Pro</button>
+                    <button onclick="window.App.setFilter('league', 'NCAA_D1')" id="flt-lg-NCAA_D1" class="px-3 py-1 text-xs font-bold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">🎓 NCAA D1 Powerhouse & Mid</button>
+                    <button onclick="window.App.setFilter('league', 'NCAA_D3')" id="flt-lg-NCAA_D3" class="px-3 py-1 text-xs font-bold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">🏫 NCAA D3 Small College</button>
+                    <button onclick="window.App.setFilter('league', 'CHL')" id="flt-lg-CHL" class="px-3 py-1 text-xs font-bold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">🍁 Major Junior (WHL/OHL/Q)</button>
+                    <button onclick="window.App.setFilter('league', 'JUNIOR_A')" id="flt-lg-JUNIOR_A" class="px-3 py-1 text-xs font-bold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">🇺🇸 Junior A (USHL/NAHL/BCHL)</button>
+                    <button onclick="window.App.setFilter('league', 'EURO')" id="flt-lg-EURO" class="px-3 py-1 text-xs font-bold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">🌍 Euro Pro (SHL/Liiga/KHL)</button>
+                    <button onclick="window.App.setFilter('league', 'FREE_AGENT')" id="flt-lg-FREE_AGENT" class="px-3 py-1 text-xs font-bold rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/40 hover:bg-rose-500/30">⚡ Free Agents & Looking for Team (13)</button>
+                </div>
+
+                <!-- Status & Position Ribbon -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-slate-800/60">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mr-1">Roster Status:</span>
+                        <button onclick="window.App.setFilter('status', 'ALL')" id="flt-st-ALL" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">All Statuses</button>
+                        <button onclick="window.App.setFilter('status', 'ACTIVE')" id="flt-st-ACTIVE" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">Active Roster</button>
+                        <button onclick="window.App.setFilter('status', 'FREE_AGENT')" id="flt-st-FREE_AGENT" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-rose-300">Looking for Team (UFA/Portal)</button>
+                        <button onclick="window.App.setFilter('status', 'PORTAL')" id="flt-st-PORTAL" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-amber-300">NCAA Portal Active</button>
+                        <button onclick="window.App.setFilter('status', 'UNCOMMITTED')" id="flt-st-UNCOMMITTED" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-purple-300">Uncommitted Recruits</button>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mr-1">Position:</span>
+                        <button onclick="window.App.setFilter('position', 'ALL')" id="flt-pos-ALL" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">All</button>
+                        <button onclick="window.App.setFilter('position', 'C')" id="flt-pos-C" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">Center</button>
+                        <button onclick="window.App.setFilter('position', 'FORWARD')" id="flt-pos-FORWARD" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">Wingers</button>
+                        <button onclick="window.App.setFilter('position', 'DEFENSE')" id="flt-pos-DEFENSE" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">Defense</button>
+                        <button onclick="window.App.setFilter('position', 'G')" id="flt-pos-G" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-200">Goalies</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prospects Cards Grid -->
+            <div id="prospects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Injected by app.js -->
+            </div>
+        </section>
+
+        <!-- 2. TAB: INTERACTIVE ICE RINK ANALYTICS -->
+        <section id="tab-view-rink" class="hidden space-y-6">
+            <div class="glass-panel p-5 rounded-xl">
+                <!-- Top Toolbar -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+                    <div>
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i data-lucide="shield" class="w-5 h-5 text-sky-400"></i>
+                            NHL Regulation Ice Rink Shot & Transition Vectors
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-1">
+                            Interactive vector coordinate mapping. Dot size and color denote Expected Goals (xG) danger tiers and transition pathways.
+                        </p>
+                    </div>
+
+                    <!-- Prospect Selector on Rink -->
+                    <div class="flex items-center gap-3">
+                        <select id="rink-prospect-select" onchange="window.App.changeRinkProspect(this.value)" class="bg-slate-900 border border-slate-700 text-white text-xs font-bold rounded-xl px-3.5 py-2 focus:outline-none focus:border-sky-400">
+                            <!-- Injected by app.js -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 2-Col Layout: Ice Canvas + Inspector Panel -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Left: Ice Canvas (8 cols) -->
+                    <div class="lg:col-span-8 space-y-4">
+                        <!-- Canvas Controls -->
+                        <div class="flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-2">
+                                <span class="text-slate-400 font-semibold">Filter Shots:</span>
+                                <button onclick="window.App.filterRinkShots('all')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-sky-500/20 text-slate-200">All Shots</button>
+                                <button onclick="window.App.filterRinkShots('goals')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-sky-500/20 text-slate-200">Goals Only</button>
+                                <button onclick="window.App.filterRinkShots('rush')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-sky-500/20 text-slate-200">Off-Rush</button>
+                                <button onclick="window.App.filterRinkShots('pp')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-sky-500/20 text-slate-200">Power Play</button>
+                            </div>
+                            <div class="flex items-center gap-3 font-mono text-[11px]">
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> High Danger (xG > 0.20)</span>
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Medium</span>
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span> Perimeter</span>
+                            </div>
+                        </div>
+
+                        <!-- Rink Canvas -->
+                        <div class="rink-canvas-container h-[420px] w-full flex items-center justify-center">
+                            <canvas id="rink-analytics-canvas" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Right: Inspector Card & Microstats (4 cols) -->
+                    <div class="lg:col-span-4 space-y-4">
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Shot Inspector</h3>
+                            <div id="shot-inspector-card">
+                                <div class="text-xs text-slate-500 italic p-4 text-center glass-card rounded-xl">
+                                    Hover over any shot marker on the ice rink to inspect xG, velocity, and play context.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Transition Output Rates</h3>
+                            <div id="rink-transition-metrics">
+                                <!-- Injected -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TAB: WAR ROOM BIG BOARD -->
+        <section id="tab-view-draft" class="hidden">
+            <div id="draft-board-container">
+                <!-- Injected by draft_board.js -->
+            </div>
+        </section>
+
+        <!-- 4. TAB: DRAFT FLOOR SIMULATOR & TRADE MACHINE -->
+        <section id="tab-view-draftfloor" class="hidden">
+            <div id="draftfloor-container">
+                <!-- Injected by draft_sim.js -->
+            </div>
+        </section>
+
+        <!-- 5. TAB: TIME-MACHINE & COMPARATOR -->
+        <section id="tab-view-timemachine" class="hidden">
+            <div id="timemachine-container">
+                <!-- Injected by comparator.js -->
+            </div>
+        </section>
+
+        <!-- 6. TAB: NCAA 2026/2027 REVENUE-SHARE & NIL HUB -->
+        <section id="tab-view-nilhub" class="hidden">
+            <div id="nilhub-container">
+                <!-- Injected by nil_hub.js -->
+            </div>
+        </section>
+
+        <!-- 7. TAB: VISIONLAB? BIOMECHANICS & OPTICAL TRACKING -->
+        <section id="tab-view-visionlab" class="hidden">
+            <div id="visionlab-container">
+                <!-- Injected by vision_lab.js -->
+            </div>
+        </section>
+
+        <!-- 8. TAB: NCAA TRANSFER PORTAL & SCHOLARSHIPS -->
+        <section id="tab-view-portal" class="hidden">
+            <div id="portal-hub-container">
+                <!-- Injected by portal_hub.js -->
+            </div>
+        </section>
+
+        <!-- 9. TAB: 3-YEAR DEPTH CHART -->
+        <section id="tab-view-depth" class="hidden">
+            <div id="depth-chart-container">
+                <!-- Injected by depth_chart.js -->
+            </div>
+        </section>
+
+        <!-- 10. TAB: LINECHEMISTRY SYNERGY & COMBINATIONS -->
+        <section id="tab-view-chemistry" class="hidden">
+            <div id="line-chemistry-container">
+                <!-- Injected by line_chemistry.js -->
+            </div>
+        </section>
+
+        <!-- 11. TAB: IN-RINK LIVE SCOUT & RINKMIC -->
+        <section id="tab-view-livescout" class="hidden">
+            <div id="livescout-container">
+                <!-- Injected by scout_entry.js -->
+            </div>
+        </section>
+
+        <!-- 12. TAB: SCOUTWIRE VOICE & TEAM MESSAGING HUB -->
+        <section id="tab-view-scoutwire" class="hidden">
+            <div class="glass-panel rounded-2xl p-5 border border-sky-500/20 shadow-2xl flex flex-col space-y-4">
+                
+                <!-- ScoutWire Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3.5">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-sky-600 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/25">
+                            <i data-lucide="radio" class="w-5 h-5 text-slate-950"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <h2 class="text-base font-extrabold text-white flex items-center gap-2">
+                                    ScoutWire™ Voice & Team Intelligence Hub
+                                </h2>
+                                <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold border border-emerald-500/30">NO 60S LIMIT</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Guaranteed chronological voice memos, instant AI transcripts, and team war room collaboration</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-slate-400 font-mono">Team War Room: <strong class="text-cyan-400">Connected</strong></span>
+                    </div>
+                </div>
+
+                <!-- Main Layout: Channels (Left) + Messages & Voice (Right) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                    
+                    <!-- Left Sidebar: Channels & Tagged Prospects -->
+                    <div class="lg:col-span-4 flex flex-col space-y-4">
+                        <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col space-y-3">
+                            <div class="flex items-center justify-between text-xs font-bold text-slate-400">
+                                <span>COMMUNICATION CHANNELS</span>
+                                <span class="text-[10px] font-mono text-cyan-400">4 Active</span>
+                            </div>
+                            <div id="scoutwire-channels-list" class="space-y-1.5">
+                                <!-- Populated dynamically by scout_wire.js -->
+                            </div>
+                        </div>
+
+                        <!-- Hockey Quick Action Legend Box -->
+                        <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col space-y-2 text-xs">
+                            <span class="font-bold text-slate-300 flex items-center gap-1.5">
+                                <span>⚡</span>
+                                <span>Hockey Context Actions</span>
+                            </span>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                Unlike generic social canned replies, every voice memo allows 1-click execution:
+                            </p>
+                            <div class="space-y-1 text-[11px] font-mono text-slate-300">
+                                <div>• <strong class="text-cyan-400">Draft Priority 1</strong>: Adds to Top Board</div>
+                                <div>• <strong class="text-emerald-400">Send Trial Offer</strong>: Sends camp invite</div>
+                                <div>• <strong class="text-amber-400">Request Reel</strong>: Queues video cuts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Active Feed & Voice Studio -->
+                    <div class="lg:col-span-8 flex flex-col space-y-4">
+                        
+                        <!-- Active Feed Box -->
+                        <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col flex-1 min-h-[380px] max-h-[500px]">
+                            <div id="scoutwire-active-channel-title" class="text-xs font-bold text-white border-b border-slate-800 pb-2.5 mb-3 flex items-center justify-between">
+                                <span>🔥 2026 War Room & Draft Board</span>
+                            </div>
+
+                            <!-- Messages Scroll Area -->
+                            <div id="scoutwire-messages-feed" class="flex-1 overflow-y-auto space-y-3 pr-1">
+                                <!-- Populated by scout_wire.js -->
+                            </div>
+                        </div>
+
+                        <!-- Voice Memo & Message Composer Bar -->
+                        <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col space-y-3 shadow-xl">
+                            
+                            <!-- Prospect Tagging Dropdown -->
+                            <div class="flex items-center space-x-2">
+                                <select id="scoutwire-tag-prospect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-400">
+                                    <option value="">Attach to Prospect (Optional)...</option>
+                                    <!-- Options injected -->
+                                </select>
+                                <span id="scoutwire-rec-timer" class="hidden text-xs font-mono font-bold text-rose-400 px-3 py-1.5 rounded-lg bg-rose-500/10 border border-rose-500/30 whitespace-nowrap">
+                                    00:00 (No limit)
+                                </span>
+                            </div>
+
+                            <!-- Live Speech Interim Preview -->
+                            <div id="scoutwire-live-speech-preview" class="hidden p-2.5 bg-slate-950/80 rounded-xl border border-cyan-500/30 text-xs text-cyan-300 italic">
+                                Live speech will appear here...
+                            </div>
+
+                            <!-- Text Input & Voice Buttons -->
+                            <div class="flex items-center space-x-2">
+                                <input type="text" id="scoutwire-input-text" placeholder="Type a scouting report or click 'Voice Memo' to record unlimited audio..." 
+                                       class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+                                
+                                <button id="btn-scoutwire-mic" class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition flex items-center space-x-1.5 whitespace-nowrap">
+                                    <i data-lucide="mic" class="w-4 h-4 text-rose-400"></i>
+                                    <span>Voice Memo</span>
+                                </button>
+
+                                <button id="btn-scoutwire-send" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-slate-950 text-xs font-extrabold shadow-lg shadow-cyan-500/20 transition flex items-center space-x-1.5 whitespace-nowrap">
+                                    <i data-lucide="send" class="w-4 h-4 text-slate-950"></i>
+                                    <span>Send</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Modal Dialog (360° Dossier & AI Synthesis) -->
+    <div id="global-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="glass-panel bg-[#0d1424] rounded-2xl max-w-5xl w-full border border-slate-700 shadow-2xl overflow-hidden relative" id="global-modal-content">
+            <!-- Modal Body Injected Dynamically -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/rink_canvas.js"></script>
+    <script src="/static/js/radar_chart.js"></script>
+    <script src="/static/js/draft_board.js"></script>
+    <script src="/static/js/draft_sim.js"></script>
+    <script src="/static/js/comparator.js"></script>
+    <script src="/static/js/nil_hub.js"></script>
+    <script src="/static/js/vision_lab.js"></script>
+    <script src="/static/js/portal_hub.js"></script>
+    <script src="/static/js/depth_chart.js"></script>
+    <script src="/static/js/line_chemistry.js"></script>
+    <script src="/static/js/rinkmic.js"></script>
+    <script src="/static/js/scout_entry.js"></script>
+    <script src="/static/js/scout_wire.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

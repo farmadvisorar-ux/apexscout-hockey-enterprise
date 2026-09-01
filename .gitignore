@@ -1,0 +1,14 @@
+# Environments & Dependencies
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Temporary Files & DBs
+temp_*
+*.log
+.DS_Store
+Thumbs.db

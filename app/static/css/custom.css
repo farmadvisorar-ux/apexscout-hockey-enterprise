@@ -1,0 +1,164 @@
+/* ApexScout Hockey Enterprise - High-Contrast & Brightened Theme */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg-primary: #0a0f1d;
+    --bg-secondary: #121a2d;
+    --bg-tertiary: #1b263b;
+    --bg-card: #152238;
+    --bg-card-hover: #1c2d4a;
+    --ice-rink-bg: #0e1e36;
+    --ice-line-red: #f43f5e;
+    --ice-line-blue: #0ea5e9;
+    --ice-crease: #0284c7;
+    --accent-cyan: #00f0ff;
+    --accent-sky: #38bdf8;
+    --accent-emerald: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-rose: #f43f5e;
+    --accent-purple: #a855f7;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-primary);
+    color: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.02em;
+}
+
+/* Luminous High-Contrast Glassmorphic Panels */
+.glass-panel {
+    background: rgba(18, 26, 45, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.glass-card {
+    background: rgba(21, 34, 56, 0.92);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    background: rgba(28, 45, 74, 0.98);
+    border-color: rgba(0, 240, 255, 0.45);
+    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+/* High-Contrast Numeric Badges & Stat Highlights */
+.stat-pop {
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.num-highlight-cyan {
+    background: rgba(0, 240, 255, 0.12);
+    color: #00f0ff;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    font-weight: 700;
+}
+
+.num-highlight-emerald {
+    background: rgba(16, 185, 129, 0.14);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    font-weight: 700;
+}
+
+.num-highlight-amber {
+    background: rgba(245, 158, 11, 0.14);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    font-weight: 700;
+}
+
+.num-highlight-purple {
+    background: rgba(168, 85, 247, 0.14);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    font-weight: 700;
+}
+
+/* 20-80 Pro Scout Rating Badges */
+.grade-badge-elite {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    color: #ffffff;
+    font-weight: 800;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
+}
+
+.grade-badge-plus {
+    background: linear-gradient(135deg, #0284c7 0%, #00f0ff 100%);
+    color: #061826;
+    font-weight: 800;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
+
+.grade-badge-average {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.grade-badge-fringe {
+    background: #334155;
+    color: #e2e8f0;
+    border: 1px solid #475569;
+}
+
+/* Tactical "What They Do" Box */
+.tactical-box {
+    background: linear-gradient(180deg, rgba(21, 34, 56, 0.95) 0%, rgba(15, 25, 42, 0.95) 100%);
+    border-left: 3px solid #00f0ff;
+    padding: 0.85rem;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Ice Rink Canvas container */
+.rink-canvas-container {
+    position: relative;
+    background: #09131f;
+    border-radius: 12px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 8px 24px rgba(0, 0, 0, 0.5);
+    border: 2px solid #1e293b;
+    overflow: hidden;
+}
+
+/* ScoutWire Voice Waveform Animation */
+.voice-wave-bar {
+    animation: voiceWave 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes voiceWave {
+    0% { height: 20%; }
+    100% { height: 100%; }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0f1d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2a3b5c;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3b507d;
+}

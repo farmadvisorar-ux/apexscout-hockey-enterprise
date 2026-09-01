@@ -1,0 +1,126 @@
+[
+  {
+    "id": "msg-001",
+    "channel_id": "prospect-evals",
+    "sender_name": "Dave Morrison",
+    "sender_role": "Director of Amateur Scouting",
+    "sender_avatar": "DM",
+    "text": "Just wrapped up live viewings of James Hagens and Anton Frondell. Detailed 90-second voice breakdown attached below with full transition data.",
+    "audio_url": "/static/audio/sample_scout_memo.wav",
+    "audio_duration_sec": 84.5,
+    "transcript": "Hagens' ability to change pace through the neutral zone is unmatched in this class. He enters the offensive zone with control on 78.4% of rushes. Frondell plays a heavier pro-style two-way game that fits our middle-six center vacancy immediately.",
+    "tagged_prospect_id": "p-001",
+    "tagged_prospect_name": "James Hagens (C - Boston College / NCAA D1)",
+    "quick_actions": [
+      "Draft Priority 1",
+      "Request Video Reel"
+    ],
+    "created_at": "2026-08-31T20:15:00"
+  },
+  {
+    "id": "msg-002",
+    "channel_id": "war-room",
+    "sender_name": "Elena Rostova",
+    "sender_role": "European Head Scout",
+    "sender_avatar": "ER",
+    "text": "RankNet is charging double for their European package. Our raw data models on SHL & Liiga prospects are significantly deeper on shot generation percentiles.",
+    "audio_url": null,
+    "audio_duration_sec": 0,
+    "transcript": null,
+    "tagged_prospect_id": "p-002",
+    "tagged_prospect_name": "Anton Frondell (C - Djurg\u00e5rdens / SHL)",
+    "quick_actions": [
+      "Tag for Draft Board",
+      "Compare vs RinkNet"
+    ],
+    "created_at": "2026-08-31T21:05:00"
+  },
+  {
+    "id": "msg-003",
+    "channel_id": "college-ncaa-acha",
+    "sender_name": "Markus Lindgren",
+    "sender_role": "Collegiate & Junior Talent Scout",
+    "sender_avatar": "ML",
+    "text": "Here's the quick voice note on the ACHA & NCAA D3 standouts for our camp invitation list. No 60-second cutoff here thankfully!",
+    "audio_url": "/static/audio/sample_college_memo.wav",
+    "audio_duration_sec": 112.0,
+    "transcript": "We should offer trial runs and camp invites to the top 3 scoring wingers in the ACHA D1 tournament. Their puck retrieval numbers and net-front battle win rate exceeded 64%.",
+    "tagged_prospect_id": "p-007",
+    "tagged_prospect_name": "Logan Hensler (RD - Wisconsin / NCAA D1)",
+    "quick_actions": [
+      "Send Trial Run Offer",
+      "Add to Camp Roster"
+    ],
+    "created_at": "2026-08-31T21:40:00"
+  },
+  {
+    "id": "msg-95c8da92",
+    "channel_id": "war-room",
+    "sender_name": "Dave Morrison",
+    "sender_role": "Director of Scouting",
+    "sender_avatar": "DM",
+    "text": "Evaluated McKenna against Spokane. 3 primary assists.",
+    "audio_url": null,
+    "audio_duration_sec": 74.0,
+    "transcript": "Evaluated McKenna against Spokane. 3 primary assists.",
+    "tagged_prospect_id": "p-01",
+    "tagged_prospect_name": "Gavin McKenna",
+    "quick_actions": [
+      "Draft Priority",
+      "Request Video Reel"
+    ],
+    "created_at": "2026-08-31T22:30:52.202075"
+  },
+  {
+    "id": "msg-9044f412",
+    "channel_id": "war-room",
+    "sender_name": "ApexScout AI Bot",
+    "sender_role": "War Room Automation",
+    "sender_avatar": "AA",
+    "text": "**Action Executed:** Draft Priority 1 for p-01. \u2b50 Player tagged as Priority 1 on the War Room Big Board.",
+    "audio_url": null,
+    "audio_duration_sec": 0.0,
+    "transcript": null,
+    "tagged_prospect_id": null,
+    "tagged_prospect_name": null,
+    "quick_actions": [
+      "View in Big Board"
+    ],
+    "created_at": "2026-08-31T22:30:52.204629"
+  },
+  {
+    "id": "msg-5fdbd7e1",
+    "channel_id": "war-room",
+    "sender_name": "Dave Morrison",
+    "sender_role": "Director of Scouting",
+    "sender_avatar": "DM",
+    "text": "Evaluated McKenna against Spokane. 3 primary assists.",
+    "audio_url": null,
+    "audio_duration_sec": 74.0,
+    "transcript": "Evaluated McKenna against Spokane. 3 primary assists.",
+    "tagged_prospect_id": "p-01",
+    "tagged_prospect_name": "Gavin McKenna",
+    "quick_actions": [
+      "Draft Priority",
+      "Request Video Reel"
+    ],
+    "created_at": "2026-08-31T22:31:12.305512"
+  },
+  {
+    "id": "msg-dcf528ad",
+    "channel_id": "war-room",
+    "sender_name": "ApexScout AI Bot",
+    "sender_role": "War Room Automation",
+    "sender_avatar": "AA",
+    "text": "**Action Executed:** Draft Priority 1 for p-01. \u2b50 Player tagged as Priority 1 on the War Room Big Board.",
+    "audio_url": null,
+    "audio_duration_sec": 0.0,
+    "transcript": null,
+    "tagged_prospect_id": null,
+    "tagged_prospect_name": null,
+    "quick_actions": [
+      "View in Big Board"
+    ],
+    "created_at": "2026-08-31T22:31:12.307239"
+  }
+]
